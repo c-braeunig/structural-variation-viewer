@@ -7,7 +7,11 @@ Both functionalities are boundled in __SVpipe.py__ to allow for a one-step proce
 __SVpipe.py__'s functionality is extended with a GUI in SVgui.py. 
 
 ## Prerequisites
-The SVx.py programs require __Python 3.7.6__, __matplotlib version 3.2.1__, __tkinter version 8.6__ and __Numpy version 1.18.3__.
+The SVx.py programs require:
+- __Python 3.7.6__
+- __Matplotlib 3.2.1__
+- __Tkinter 8.6__
+- __Numpy 1.18.3__
 
 The [Anaconda](https://www.anaconda.com/products/individual) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installers provide quick and easy installation instructions and bring the other prerequisites.
 Alternatively, you can install Python 3 with your preferred method and then additionally download the other prerequisites.
@@ -15,7 +19,145 @@ Alternatively, you can install Python 3 with your preferred method and then addi
 Once all the required software is in place, simply download the program(s) of interest.
 
 # Usage
+When relying on the command-line programs, you can choose to move step-wise from input VCF to output figure (using __SVread.py__ and __SVsee.py__) or to take the direct path (using __SVpipe.py__). The former allows for additional manipulation before visualization, the latter is more intuitive and quicker.
 
+### Using __SVread.py__ and __SVsee.py__
+In the location where the programs are saved execute 
 ```
-WORK IN PROGRESS
+python SVread.py -h
 ```
+This will print all available options and settable parameters
+```
+usage: SVread.py [-h] [--vcf VCF]
+                 [--sort {asc_size,des_size,type,type_asc_size,type_des_size,CR}]
+                 [--ov] [-C CONTIGNAME] [-T TYPE [TYPE ...]]
+                 [-S CONTTYPE [CONTTYPE ...]] [--ulim ULIM] [--llim LLIM]
+                 [--seq] [--nosize] [--circos] [--out OUT]
+
+Parse and derive SV information from .vcf output of variant calling software;
+--ov generates a superficial overview of the listed SV types and their number
+of occurrences. Using --sort, --C, --T, --S, --llim and --ulim, the SVs of
+intereste can be isolated and printed to stdout or to a file ( --out) in a
+bed-like file format. For further information on the vcf format consult
+https://samtools.github.io/hts-specs/VCFv4.2.pdf
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --vcf VCF             Provide variant call file in VCF format
+  --sort {asc_size,des_size,type,type_asc_size,type_des_size,CR}
+                        Provide sorting criterium to organize SVs; SVs sorted
+                        by position on chromosome/contig by default; no
+                        sorting recommended for downstream SVsee use; Use "CR"
+                        when filtering by "BND" to sort target locations
+  --ov                  Choose to display an overview of SVs in the provided
+                        vcf file; --ov only will print assembly-level
+                        information; using --C option will print single-
+                        contig-level information
+  -C CONTIGNAME, --contigname CONTIGNAME
+                        Provide contig/chromosome ID by which to filter SV
+                        records; multiple IDs given space-separated; use only
+                        one for visualization
+  -T TYPE [TYPE ...], --type TYPE [TYPE ...]
+                        Provide type(s) by which to filter SV records i.e.
+                        'DEL'; multiple types given space-separated; 'BND' for
+                        complex rearrangments with breakends
+  -S CONTTYPE [CONTTYPE ...], --conttype CONTTYPE [CONTTYPE ...]
+                        Complementary type filter, same usage as --T
+  --ulim ULIM           Provide upper length limit for SVs [bp] (inclusive)
+  --llim LLIM           Provide lower length limit for SVs [bp] (inclusive)
+  --seq                 Select to write sequence data into single fasta file;
+                        requires --out
+  --nosize              Select to not display the end position and size [bp]
+                        of each SV in line
+  --circos              Circos mode; generates karyotype and link files in
+                        current directory for circos for BND-type SVs to show
+                        inter-chromosomal events; compatible w/ --C option
+  --out OUT             Provide desired name of bed-formatted output file
+```
+__SVread.py__ relies on a VCF file and can filter and sort the variant calls. If you want to gain a rough overview of the variant call data execute ```python SVread.py --ov```. This will print the IDs of the contigs in the assembly and the numbers of variants called on each contig. The breadth of the overview can be narrowed down to a given contig with ```python SVread.py --ov --C [contig ID]```. __SVread.py__ can print overviews for several contigs at once, but visualization only works with individual contigs. Several filters and sorting options allow to only visualize variant subsets of interest. Option order is not relevant. Save the filtered variant calls to an output file with ```--out```.
+
+The filtered variant calls can then be fed to __SVsee.py__ for visualization.
+To get an idea of the available options and parameters execute
+```
+python SVsee.py -h
+```
+This will print
+```
+usage: SVsee.py [-h] [--IN IN] [--vcf VCF] [--gff MOD] [--bed MOD]
+                [--blast MOD] [--heat HEAT] [--reg REG REG] [--out OUT]
+                [--outfmt {pdf,svg,png}]
+
+Single-chromsome visualization of SV distribution based on SVread.py output
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --IN IN               Provide input file (SVread.py output file)
+  --vcf VCF             Provide VCF file corresponding to input file
+  --gff MOD             Provide contig annotation as gff file; must have .gff
+                        or .GFF extension
+  --bed MOD             Provide contig annotation as bed file; must have .bed
+                        or .BED extension
+  --blast MOD           Provide contig annotation as blast output file (outfmt
+                        6)
+  --heat HEAT           Generate heatmap with given window size (in bp)
+  --reg REG REG         Specify region bounds (in bp) for more zoomed-in look;
+                        bounds given whitespace-separated i.e. 1000 1500
+  --out OUT             Provide desired name of output file
+  --outfmt {pdf,svg,png}
+                        Select output format, default=png
+```
+After providing __SVread.py__'s output file and the VCF file again, you can additionally provide annotations in the form of GFF, BED or (tabular) output (w/ ```--gff```, ```--bed```, ```--blast``` respectively) as well as a heat map to visualize variant density more intiutively (```--heat```). The corresponding graphs are added below the variant graph within the same figure. The view of the selected contig can be restricted with ```--reg```. Finally save the figure with ```--out``` and ```-outfmt```.
+
+### Using SVpipe.py
+__SVpipe.py__ combines the functionalities of __SVread.py__ and __SVsee.py__ into a single script, fed with a VCF file and immediately producing a figure. 
+Execute to see all options and parameters
+```
+python SVpipe.py -h
+```
+```
+usage: SVpipe.py [-h] [--vcf VCF] [-C CONTIGNAME] [-T TYPE [TYPE ...]]
+                 [-S CONTTYPE [CONTTYPE ...]] [--ulim ULIM] [--llim LLIM]
+                 [--gff MOD] [--bed MOD] [--blast MOD]
+                 [-R ANNOTYPE [ANNOTYPE ...]] [--heat HEAT] [--reg REG REG]
+                 [--out OUT] [--outfmt {pdf,svg,png}] [--ov]
+
+Full structural variant visualization from raw VCF file to figure
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --vcf VCF             Provide VCF file
+  -C CONTIGNAME, --contigname CONTIGNAME
+                        Provide contig/chromosome criterion by which to filter
+                        SV records; multiple criteria given space-separated
+  -T TYPE [TYPE ...], --type TYPE [TYPE ...]
+                        Provide type criterion by which to filter SV records
+                        i.e. 'DEL'; multiple criteria given space-separated;
+                        'BND' for complex rearrangments with breakends
+  -S CONTTYPE [CONTTYPE ...], --conttype CONTTYPE [CONTTYPE ...]
+                        Verbose type filter: types entered will be omitted.
+                        Same usage as --tfil
+  --ulim ULIM           Provide upper length limit for SVs [bp] (inclusive)
+  --llim LLIM           Provide lower length limit for SVs [bp] (inclusive)
+  --gff MOD             Provide contig annotation as gff file; must have .gff
+                        or .GFF extension
+  --bed MOD             Provide contig annotation as bed file; must have .bed
+                        or .BED extension
+  --blast MOD           Provide contig annotation as blast output file (outfmt
+                        6)
+  -R ANNOTYPE [ANNOTYPE ...], --annotype ANNOTYPE [ANNOTYPE ...]
+                        Provide type(s) of annotations to be included (only
+                        applicable on GFF annotation files)
+  --heat HEAT           Generate heatmap with given window size (in bp)
+  --reg REG REG         Specify region bounds for more zoomed-in look; bounds
+                        given whitespace-separated i.e. 1000 1500
+  --out OUT             Provide desired name of graphic output
+  --outfmt {pdf,svg,png}
+                        Select output format, default=png
+  --ov                  Choose to display an overview of SVs in the provided
+                        VCF file; --ov only will print assembly-level
+                        information; using --C option will print single-
+                        contig-level information
+``` 
+### GUI-based exploration with SVgui.py
+While they get the job done, the scripts above don't let look at the graphs before saving them and as a result fine tuning parameters can be a bit laborious. SVgui.py allows you to look at the data, pan, zoom and view a number of contigs at once and only save the figures you want. For this, it makes use of a tkinter-based graphical user interface and as a result requires a terminal with graphical capabilities. For testing, I used Anaconda3's Anaconda prompt locally. 
+

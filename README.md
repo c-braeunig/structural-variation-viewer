@@ -158,6 +158,26 @@ optional arguments:
                         information; using --C option will print single-
                         contig-level information
 ``` 
-### GUI-based exploration with SVgui.py
-While they get the job done, the scripts above don't let look at the graphs before saving them and as a result fine tuning parameters can be a bit laborious. SVgui.py allows you to look at the data, pan, zoom and view a number of contigs at once and only save the figures you want. For this, it makes use of a tkinter-based graphical user interface and as a result requires a terminal with graphical capabilities. For testing, I used Anaconda3's Anaconda prompt locally. 
+__SVpipe.py__ features all relevant options and flags from __SVread.py__ and __SVsee.py__.
 
+### GUI-based exploration with SVgui.py
+While they get the job done, the scripts above don't let look at the graphs before saving them and as a result fine tuning parameters can be a bit laborious. __SVgui.py__ allows you to look at the data, pan, zoom and view a number of contigs at once and only save the figures you want. For this, it makes use of a tkinter-based graphical user interface and as a result requires a terminal with graphical capabilities. For testing, I used Anaconda3's Anaconda prompt locally. 
+
+![Main Interface Window](https://github.com/c-braeunig/structural-variation-viewer/blob/Images/GUI_main_boxes.JPG?raw=true)
+
+The main interface window features a textbox for showing and recording information about the used files and shown data (yellow), a parameter pane (blue) and a tip pane (green).
+Load a VCF file by clicking ```Load```, followed by ```Variant file```. Then select a contig from the dropdown menu at the top of the parameter pane. With  ```Load``` and ```Annotation file``` a GFF, BED or blast (tabular) output file can be loaded for annotation. This can also be done later on though.
+
+![Contig Dropdown Menu](https://github.com/c-braeunig/structural-variation-viewer/blob/Images/GUI_contig_2.JPG)
+
+Once selected an overview of the SV types and numbers on the selected contig will be printed to the textbox and the various parameters option interfaces updated. Hover over individual option interfaces to receive information in the tip pane. 
+
+![After contig selection](https://github.com/c-braeunig/structural-variation-viewer/blob/Images/GUI_contig_selected.JPG?raw=true)
+
+Now you can set the same parameters as seen in __SVpipe.py__.
+
+![Parameter selection](https://github.com/c-braeunig/structural-variation-viewer/blob/Images/GUI_draw_full.JPG?raw=true)
+
+Finally, clicking ```Draw``` will trigger the spawning of a child window and generation of the figure therein.
+
+```TO BE CONTINUED```

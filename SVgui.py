@@ -235,7 +235,7 @@ class Application(tk.Frame):
 
         self.type_selection=[]
         self.typeButton.menu.delete(0, "end")
-        for x in self.types:
+        for x in sorted(self.types):
             exec(f'self.{x}_var=tk.BooleanVar(self.master)')
             exec(f'self.{x}_var.set(False)')
             exec(f'self.typeButton.menu.add_checkbutton(label="{x}",variable=self.{x}_var)')
@@ -441,7 +441,7 @@ class Application(tk.Frame):
 
            self.a_type_selection=[]
            self.a_typeButton.menu.delete(0, "end")
-           for x in self.a_types:
+           for x in sorted(self.a_types):
                exec(f'self.{x}_var=tk.BooleanVar(self.master)')
                exec(f'self.{x}_var.set(False)')
                exec(f'self.a_typeButton.menu.add_checkbutton(label="{x}",variable=self.{x}_var)')

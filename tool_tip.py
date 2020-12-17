@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 class ToolTip:
     def __init__(self,widget,text,info_var):
         self.text=text

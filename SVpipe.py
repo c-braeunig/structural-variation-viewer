@@ -1,4 +1,4 @@
-#!/usr/bin/eny python3
+#!/usr/bin/env python3
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches

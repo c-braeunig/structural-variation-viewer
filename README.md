@@ -163,7 +163,7 @@ __SVpipe.py__ features all relevant options and flags from __SVread.py__ and __S
 ### GUI-based exploration with SVgui.py
 While they get the job done, the scripts above don't let look at the graphs before saving them and as a result fine tuning parameters can be a bit laborious. __SVgui.py__ allows you to look at the data, pan, zoom and view a number of contigs at once and only save the figures you want. For this, it makes use of a tkinter-based graphical user interface and as a result requires a terminal with graphical capabilities. For testing, I used Anaconda3's Anaconda prompt locally. 
 
-![Main Interface Window](https://github.com/c-braeunig/structural-variation-viewer/blob/images/GUI_main_2.JPG?raw=true)
+![Main Interface Window](https://github.com/c-braeunig/structural-variation-viewer/blob/main/images/GUI_main_2.JPG?raw=true)
 
 The main interface window features a textbox for showing and recording information about the used files and shown data (yellow), a parameter pane (blue) and a tip pane (green).
 Load a VCF file by clicking ```Load```, followed by ```Variant file```. Then select a contig from the dropdown menu at the top of the parameter pane. With  ```Load``` and ```Annotation file``` a GFF, BED or blast (tabular) output file can be loaded for annotation. This can also be done later on though.

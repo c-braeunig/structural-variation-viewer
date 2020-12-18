@@ -180,4 +180,10 @@ Now you can set the same parameters as seen in __SVpipe.py__.
 
 Finally, clicking ```Draw``` will trigger the spawning of a child window and generation of the figure therein.
 
+![Figure window](https://github.com/c-braeunig/structural-variation-viewer/blob/main/images/GUI_figure_window.JPG?raw=true)
+
+When a GFF-formatted annotation file was loaded, left-click on individual features will spawn a child window that records the attributes of the clicked features and allows for saving the attributes to file.
+
+![Feature attribute window](https://github.com/c-braeunig/structural-variation-viewer/blob/main/images/GUI_anno_info_box.JPG?raw=true)
+
 ```TO BE CONTINUED```

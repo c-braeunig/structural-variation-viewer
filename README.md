@@ -172,7 +172,7 @@ Load a VCF file by clicking ```Load```, followed by ```Variant file```. Then sel
 
 Once selected an overview of the SV types and numbers on the selected contig will be printed to the textbox and the various parameters option interfaces updated. Hover over individual option interfaces to receive information in the tip pane. 
 
-![After contig selection](https://github.com/c-braeunig/structural-variation-viewer/blob/main/images/GUI_typeselection.JPG?raw=true)
+![After contig selection](https://github.com/c-braeunig/structural-variation-viewer/blob/main/images/GUI_double_typeselection.JPG?raw=true)
 
 Now you can set the same parameters as seen in __SVpipe.py__.
 

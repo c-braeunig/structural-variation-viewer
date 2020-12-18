@@ -168,15 +168,15 @@ While they get the job done, the scripts above don't let look at the graphs befo
 The main interface window features a textbox for showing and recording information about the used files and shown data (yellow), a parameter pane (blue) and a tip pane (green).
 Load a VCF file by clicking ```Load```, followed by ```Variant file```. Then select a contig from the dropdown menu at the top of the parameter pane. With  ```Load``` and ```Annotation file``` a GFF, BED or blast (tabular) output file can be loaded for annotation. This can also be done later on though.
 
-![Contig Dropdown Menu](https://github.com/c-braeunig/structural-variation-viewer/blob/images/GUI_contig.JPG)
+![Contig Dropdown Menu](https://github.com/c-braeunig/structural-variation-viewer/blob/main/images/GUI_contig.JPG)
 
 Once selected an overview of the SV types and numbers on the selected contig will be printed to the textbox and the various parameters option interfaces updated. Hover over individual option interfaces to receive information in the tip pane. 
 
-![After contig selection](https://github.com/c-braeunig/structural-variation-viewer/blob/images/GUI_typeselection.JPG?raw=true)
+![After contig selection](https://github.com/c-braeunig/structural-variation-viewer/blob/main/images/GUI_typeselection.JPG?raw=true)
 
 Now you can set the same parameters as seen in __SVpipe.py__.
 
-![Parameter selection](https://github.com/c-braeunig/structural-variation-viewer/blob/images/GUI_both_selected.JPG?raw=true)
+![Parameter selection](https://github.com/c-braeunig/structural-variation-viewer/blob/main/images/GUI_both_selected.JPG?raw=true)
 
 Finally, clicking ```Draw``` will trigger the spawning of a child window and generation of the figure therein.
 

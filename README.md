@@ -24,7 +24,7 @@ When relying on the command-line programs, you can choose to move step-wise from
 ### Using __SVread.py__ and __SVsee.py__
 In the location where the programs are saved execute 
 ```
-python SVread.py -h
+$ python SVread.py -h
 ```
 This will print all available options and settable parameters
 ```
@@ -79,7 +79,7 @@ __SVread.py__ relies on a VCF file and can filter and sort the variant calls. If
 The filtered variant calls can then be fed to __SVsee.py__ for visualization.
 To get an idea of the available options and parameters execute
 ```
-python SVsee.py -h
+$ python SVsee.py -h
 ```
 This will print
 ```
@@ -118,7 +118,7 @@ After providing __SVread.py__'s output file and the VCF file again, you can addi
 __SVpipe.py__ combines the functionalities of __SVread.py__ and __SVsee.py__ into a single script, fed with a VCF file and immediately producing a figure. 
 Execute to see all options and parameters
 ```
-python SVpipe.py -h
+$ python SVpipe.py -h
 ```
 ```
 usage: SVpipe.py [-h] [--vcf VCF] [-C CONTIGNAME] [-T TYPE [TYPE ...]]
@@ -172,6 +172,8 @@ __SVpipe.py__ features all relevant options and flags from __SVread.py__ and __S
 
 ### GUI-based exploration with SVgui.py
 While they get the job done, the scripts above don't let look at the graphs before saving them and as a result fine tuning parameters can be a bit laborious. __SVgui.py__ allows you to look at the data, pan, zoom and view a number of contigs at once and only save the figures you want. For this, it makes use of a tkinter-based graphical user interface and as a result requires a terminal with graphical capabilities. For testing, I used Anaconda3's Anaconda prompt locally. 
+
+```$ python SVgui.py ``` will start SVgui.py and open the main window.
 
 ![Main Interface Window](https://github.com/c-braeunig/structural-variation-viewer/blob/main/images/GUI_main_2.JPG?raw=true)
 

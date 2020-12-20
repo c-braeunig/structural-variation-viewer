@@ -71,7 +71,7 @@ optional arguments:
                         of each SV in line
   --circos              Circos mode; generates karyotype and link files in
                         current directory for circos for BND-type SVs to show
-                        inter-chromosomal events; compatible w/ --C option
+                        inter-chromosomal events; compatible w/ -C option
   --out OUT             Provide desired name of bed-formatted output file
 ```
 __SVread.py__ relies on a VCF file and can filter and sort the variant calls. If you want to gain a rough overview of the variant call data execute ```python SVread.py --ov```. This will print the IDs of the contigs in the assembly and the numbers of variants called on each contig. The breadth of the overview can be narrowed down to a given contig with ```python SVread.py --ov --C [contig ID]```. __SVread.py__ can print overviews for several contigs at once, but visualization only works with individual contigs. Several filters and sorting options allow to only visualize variant subsets of interest. Option order is not relevant. Save the filtered variant calls to an output file with ```--out```.
@@ -97,8 +97,14 @@ optional arguments:
                         or .GFF extension
   --bed MOD             Provide contig annotation as bed file; must have .bed
                         or .BED extension
-  --blast MOD           Provide contig annotation as blast output file (outfmt
-                        6)
+  --blast MOD           Provide contig annotation as blast output file (outfmt 6)
+  -R ANNOTYPE [ANNOTYPE ...], --annotype ANNOTYPE [ANNOTYPE ...]
+                        Provide type(s) of annotations to be included (only
+                        applicable on GFF annotation files)
+  -RL ANNO_LOWER, --anno_lower ANNO_LOWER
+                        Provide lower length limit for annotation features (in bp)
+  -RU ANNO_UPPER, --anno_upper ANNO_UPPER
+                        Provide upper length limit for annotation features (in bp)
   --heat HEAT           Generate heatmap with given window size (in bp)
   --reg REG REG         Specify region bounds (in bp) for more zoomed-in look;
                         bounds given whitespace-separated i.e. 1000 1500
@@ -147,6 +153,10 @@ optional arguments:
   -R ANNOTYPE [ANNOTYPE ...], --annotype ANNOTYPE [ANNOTYPE ...]
                         Provide type(s) of annotations to be included (only
                         applicable on GFF annotation files)
+  -RL ANNO_LOWER, --anno_lower ANNO_LOWER
+                        Provide lower length limit for annotation features (in bp)
+  -RU ANNO_UPPER, --anno_upper ANNO_UPPER
+                        Provide upper length limit for annotation features (in bp)
   --heat HEAT           Generate heatmap with given window size (in bp)
   --reg REG REG         Specify region bounds for more zoomed-in look; bounds
                         given whitespace-separated i.e. 1000 1500

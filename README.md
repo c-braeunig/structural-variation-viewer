@@ -19,7 +19,7 @@ The variant mapping script requires*:
 - __ngmlr 0.2.7__
 - __sniffles 1.0.11__
 
-* *The scripts may work also with older version of the respective programs*
+\* *The scripts may work also with older version of the respective programs*
 
 The [Anaconda](https://www.anaconda.com/products/individual) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installers provide quick and easy installation instructions and bring the other prerequisites.
 Alternatively, you can install Python 3 with your preferred method and then additionally download the other prerequisites.

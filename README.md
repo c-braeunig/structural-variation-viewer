@@ -7,11 +7,19 @@ Both functionalities are boundled in __SVpipe.py__ to allow for a one-step proce
 __SVpipe.py__'s functionality is extended with a GUI in SVgui.py. 
 
 ## Prerequisites
-The SVx.py programs require:
+The SVx.py programs require*:
 - __Python 3.7.6__
 - __Matplotlib 3.2.1__
 - __Tkinter 8.6__
 - __Numpy 1.18.3__
+
+The variant mapping script requires*:
+- __samtools 1.9__
+- __bedtools 2.29.2__
+- __ngmlr 0.2.7__
+- __sniffles 1.0.11__
+
+* *The scripts may work also with older version of the respective programs*
 
 The [Anaconda](https://www.anaconda.com/products/individual) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installers provide quick and easy installation instructions and bring the other prerequisites.
 Alternatively, you can install Python 3 with your preferred method and then additionally download the other prerequisites.
@@ -20,6 +28,9 @@ Once all the required software is in place, simply download the program(s) of in
 
 # Usage
 When relying on the command-line programs, you can choose to move step-wise from input VCF to output figure (using __SVread.py__ and __SVsee.py__) or to take the direct path (using __SVpipe.py__). The former allows for additional manipulation before visualization, the latter is more intuitive and quicker.
+
+### Variant mapping
+The following programs were developed in a usage context of existing assemblies that were to be investigated for structural variants. The complete mapping process can be handled at once using the enclosed variant mapping script __full_SV_pipe.sh__. The bash script first uses samtools's _faidx_ to make an index of the 'query' assembly (in FASTA format) that is later to be aligned against the reference assembly. Based on the query index, __makebed.py__ generates a BED file of simulated sequencing reads by designating distinct sequence section coordinates based on the window size and step size parameters given. BEDtools's _getfasta_ then extracts these fake reads from the query assembly. _ngmlr_ then maps these reads against the reference assembly. Based on the alignments, _sniffles_ calls the variants, producing a VCF-formatted file.
 
 ### Using __SVread.py__ and __SVsee.py__
 In the location where the programs are saved execute 
@@ -197,5 +208,3 @@ Finally, clicking ```Draw``` will trigger the spawning of a child window and gen
 When a GFF-formatted annotation file was loaded, left-click on individual features will spawn a child window that records the attributes of the clicked features and allows for saving the attributes to file.
 
 ![Feature attribute window](https://github.com/c-braeunig/structural-variation-viewer/blob/main/images/GUI_anno_info_box.JPG?raw=true)
-
-```TO BE CONTINUED```

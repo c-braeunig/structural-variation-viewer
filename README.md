@@ -197,7 +197,7 @@ $ python SVpipe.py --vcf OEVEvOLAT_genomic.vcf \
 ```
 will render deletions and insertions between 100 and 10000 bp in length on contig NC_019867.2 from the file _OEVEvOLAT_genomic.vcf_ and all exon, CDS and mRNA features from _OLAT\_genomic.gff_ between 100 and 5000 bp in length, along with a SV density heatmap with window size of 1 mb. 
 
-[Example SVpipe.py render](https://github.com/c-braeunig/structural-variation-viewer/blob/main/images/OEVEvOLAT.png?raw=true)
+![Example SVpipe.py render](https://github.com/c-braeunig/structural-variation-viewer/blob/main/images/OEVEvOLAT.png?raw=true)
 
 ### GUI-based exploration with SVgui.py
 While they get the job done, the scripts above don't let look you at the graphs before saving them and as a result fine tuning parameters can be a bit laborious. __SVgui.py__ allows you to look at the data, pan, zoom and view a number of contigs at once and only save the figures you want. For this, it makes use of a tkinter-based graphical user interface and as a result requires a terminal with graphical capabilities. For testing, I used Anaconda3's Anaconda prompt locally. 

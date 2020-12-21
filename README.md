@@ -112,6 +112,9 @@ optional arguments:
   -R ANNOTYPE [ANNOTYPE ...], --annotype ANNOTYPE [ANNOTYPE ...]
                         Provide type(s) of annotations to be included (only
                         applicable on GFF annotation files)
+  -RC ANNO_CONT [ANNO_CONT ...], --anno_cont ANNO_CONT [ANNO_CONT ...]
+                        Complementary type filter, selected type(s) will be
+                        excluded, multiple arguments given space-separated
   -RL ANNO_LOWER, --anno_lower ANNO_LOWER
                         Provide lower length limit for annotation features (in bp)
   -RU ANNO_UPPER, --anno_upper ANNO_UPPER
@@ -164,6 +167,8 @@ optional arguments:
   -R ANNOTYPE [ANNOTYPE ...], --annotype ANNOTYPE [ANNOTYPE ...]
                         Provide type(s) of annotations to be included (only
                         applicable on GFF annotation files)
+  -RC ANNO_CONT [ANNO_CONT ...], --anno_cont ANNO_CONT [ANNO_CONT ...]
+                        Complementary type filter...analogous to -S
   -RL ANNO_LOWER, --anno_lower ANNO_LOWER
                         Provide lower length limit for annotation features (in bp)
   -RU ANNO_UPPER, --anno_upper ANNO_UPPER

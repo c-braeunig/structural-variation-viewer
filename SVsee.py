@@ -277,11 +277,37 @@ def _vdraw(infile,cname,Plot,**kwargs):
 def _annodraw(input,cname,Plot,**kwargs):
     reg=kwargs.get('reg',None)
     tfil=kwargs.get('a_tfil',None)
+    a_lo=kwargs.get('a_lo',None)
+    a_up=kwargs.get('a_up',None)
+    a_co=kwargs.get('a_co',None)
+    def _filterbylength(input,lower_limit,upper_limit):
+        output=[]
+        if lower_limit and upper_limit:
+           for x in input:
+               if lower_limit<=x.length<=upper_limit:
+                  output.append(x)
+        elif lower_limit:
+           for x in input:
+               if lower_limit<=x.length:
+                  output.append(x)
+        elif upper_limit:
+           for x in input:
+               if upper_limit>=x.length:
+                  output.append(x)
+        else:
+           output=input[:]
+        return output   
+           
     ext=re.split('\.',input)[-1]
     anno_list=_tupperware(input,cname,type=ext,reg=reg)
+    anno_list=_filterbylength(anno_list, a_lo, a_up)
     if ext=='gff' and tfil or ext=='GFF' and tfil:
        new_anno=[x for x in anno_list if x.type in tfil]
        anno_list=sorted(new_anno,key=lambda x: x.start)
+    elif ext=='gff' and a_co or ext=='GFF' and a_co:
+       new_anno=[x for x in anno_list if x.type not in a_co]
+       anno_list=sorted(new_anno,key=lambda x: x.start)
+    
     anno_dict=_stack(anno_list,0.015)
     max_h=max(anno_dict.keys())+0.015
     Plot.ax2.set_ylim(0,max_h)
@@ -388,6 +414,10 @@ if __name__ == "__main__":
    parser.add_argument('--gff',dest='mod',help='Provide contig annotation as gff file; must have .gff or .GFF extension')
    parser.add_argument('--bed',dest='mod',help='Provide contig annotation as bed file; must have .bed or .BED extension')
    parser.add_argument('--blast',dest='mod',help='Provide contig annotation as blast output file (outfmt 6)')
+   parser.add_argument('-R','--anno_type',type=str,nargs='+',help='Provide type(s) of annotations to be included (only applicable on GFF annotation files)')
+   parser.add_argument('-RC','--anno_cont',type=str,nargs='+',help='Complementary type filter, selected type(s) will be excluded, multiple arguments given space-separated')
+   parser.add_argument('-RL','--anno_lower',type=int,help='Provide lower length limit for annotation features (in bp)')
+   parser.add_argument('-RU','--anno_upper',type=int,help='Provide upper length limit for annotation features (in bp)')
    parser.add_argument('--heat',type=int,help='Generate heatmap with given window size (in bp)')
    parser.add_argument('--reg',nargs=2,type=int,help='Specify region bounds (in bp) for more zoomed-in look; bounds given whitespace-separated i.e. 1000 1500')
    parser.add_argument('--out',type=str,help='Provide desired name of output file')

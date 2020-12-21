@@ -430,12 +430,12 @@ if __name__ == "__main__":
    if args.mod and args.heat:
       plot = Plot(cname,clen,reg=args.reg, anno=args.mod, heat=args.heat)
       variants=_vdraw(args.IN,cname,plot,reg=args.reg,ret=True)
-      _annodraw(args.mod,cname,plot,reg=args.reg)
+      _annodraw(args.mod,cname,plot,reg=args.reg,a_tfil=args.anno_type,a_lo=args.anno_lower,a_up=args.anno_upper,a_co=args.anno_cont)
       _heatmap(variants,clen,args.heat,plot,reg=args.reg)
    elif args.mod:
       plot = Plot(cname,clen,reg=args.reg, anno=args.mod)
       _vdraw(args.IN,cname,plot,reg=args.reg)
-      _annodraw(args.mod,cname,plot,reg=args.reg)
+      _annodraw(args.mod,cname,plot,reg=args.reg,a_tfil=args.anno_type,a_lo=args.anno_lower,a_up=args.anno_upper,a_co=args.anno_cont)
    elif args.heat:
       plot = Plot(cname,clen,reg=args.reg, heat=args.heat)
       variants=_vdraw(args.IN,cname,plot,reg=args.reg,ret=True)

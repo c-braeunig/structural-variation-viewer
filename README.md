@@ -110,11 +110,12 @@ optional arguments:
                         or .BED extension
   --blast MOD           Provide contig annotation as blast output file (outfmt 6)
   -R ANNOTYPE [ANNOTYPE ...], --annotype ANNOTYPE [ANNOTYPE ...]
-                        Provide type(s) of annotations to be included (only
-                        applicable on GFF annotation files)
+                        Provide type(s) of annotations to be included 
+                        (only applicable on GFF annotation files)
   -RC ANNO_CONT [ANNO_CONT ...], --anno_cont ANNO_CONT [ANNO_CONT ...]
                         Complementary type filter, selected type(s) will be
                         excluded, multiple arguments given space-separated
+                        (only applicable on GFF annotation files)
   -RL ANNO_LOWER, --anno_lower ANNO_LOWER
                         Provide lower length limit for annotation features (in bp)
   -RU ANNO_UPPER, --anno_upper ANNO_UPPER
@@ -165,10 +166,11 @@ optional arguments:
   --blast MOD           Provide contig annotation as blast output file (outfmt
                         6)
   -R ANNOTYPE [ANNOTYPE ...], --annotype ANNOTYPE [ANNOTYPE ...]
-                        Provide type(s) of annotations to be included (only
-                        applicable on GFF annotation files)
+                        Provide type(s) of annotations to be included 
+                        (only applicable on GFF annotation files)
   -RC ANNO_CONT [ANNO_CONT ...], --anno_cont ANNO_CONT [ANNO_CONT ...]
                         Complementary type filter...analogous to -S
+                        (only applicable on GFF annotation files)
   -RL ANNO_LOWER, --anno_lower ANNO_LOWER
                         Provide lower length limit for annotation features (in bp)
   -RU ANNO_UPPER, --anno_upper ANNO_UPPER

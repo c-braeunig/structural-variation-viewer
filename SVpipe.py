@@ -67,7 +67,7 @@ if __name__=='__main__':
    parser.add_argument('--bed',dest='mod',help='Provide contig annotation as bed file; must have .bed or .BED extension')
    parser.add_argument('--blast',dest='mod',help='Provide contig annotation as blast output file (outfmt 6)')
    parser.add_argument('-R','--annotype',type=str,nargs='+',help='Provide type(s) of annotations to be included (only applicable on GFF annotation files)')
-   parser.add_argument('-RC','--anno_cont',type=str,nargs='+',help='Complementary type filter...analogous to -S')
+   parser.add_argument('-RC','--anno_cont',type=str,nargs='+',help='Complementary type filter...analogous to -S (only applicable on GFF annotation files)')
    parser.add_argument('-RL','--anno_lower',type=int,help='Provide lower length limit for annotation features (in bp)')
    parser.add_argument('-RU','--anno_upper',type=int,help='Provide upper length limit for annotation features (in bp)')    
    parser.add_argument('--heat',type=int,help='Generate heatmap with given window size (in bp)')

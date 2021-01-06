@@ -95,7 +95,9 @@ $ python SVsee.py -h
 This will print
 ```
 usage: SVsee.py [-h] [--IN IN] [--vcf VCF] [--gff MOD] [--bed MOD]
-                [--blast MOD] [--heat HEAT] [--reg REG REG] [--out OUT]
+                [--blast MOD] [-R ANNO_TYPE [ANNO_TYPE ...]]
+                [-RC ANNO_CONT [ANNO_CONT ...]] [-RL ANNO_LOWER]
+                [-RU ANNO_UPPER] [--heat HEAT] [--reg REG REG] [--out OUT]
                 [--outfmt {pdf,svg,png}]
 
 Single-chromsome visualization of SV distribution based on SVread.py output
@@ -139,8 +141,10 @@ $ python SVpipe.py -h
 usage: SVpipe.py [-h] [--vcf VCF] [-C CONTIGNAME] [-T TYPE [TYPE ...]]
                  [-S CONTTYPE [CONTTYPE ...]] [--ulim ULIM] [--llim LLIM]
                  [--gff MOD] [--bed MOD] [--blast MOD]
-                 [-R ANNOTYPE [ANNOTYPE ...]] [--heat HEAT] [--reg REG REG]
-                 [--out OUT] [--outfmt {pdf,svg,png}] [--ov]
+                 [-R ANNO_TYPE [ANNO_TYPE ...]]
+                 [-RC ANNO_CONT [ANNO_CONT ...]] [-RL ANNO_LOWER]
+                 [-RU ANNO_UPPER] [--heat HEAT] [--reg REG REG] [--out OUT]
+                 [--outfmt {pdf,svg,png}] [--ov]
 
 Full structural variant visualization from raw VCF file to figure
 

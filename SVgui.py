@@ -562,7 +562,7 @@ class Application(tk.Frame):
         _continue=False
     
         def annotation_types(self):
-            self.a_tfil=[0]
+            self.a_tfil=[]
             if self.a_types:
                for x in self.a_types:
                    eval_statement=f'self.{x}_var.get()'

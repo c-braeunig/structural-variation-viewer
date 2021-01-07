@@ -58,7 +58,7 @@ if __name__=='__main__':
 
    parser=argparse.ArgumentParser(description='Full structural variant visualization from raw VCF file to figure')
    parser.add_argument('--vcf',help='Provide VCF file')
-   parser.add_argument('-C','--contigname',type=str,nargs=1,help='Provide contig/chromosome ID by which to filter SV records; multiple IDs given space-separated')
+   parser.add_argument('-C','--contigname',type=str,nargs=1,help='Provide contig/chromosome ID by which to filter SV records; multiple IDs given space-separated; use only one ID for visualization')
    parser.add_argument('-T','--type',type=str,nargs='+',help="Provide type(s) by which to filter SV records i.e. 'DEL'; multiple types given space-separated; 'BND' for complex rearrangments with breakends")
    parser.add_argument('-S','--conttype',type=str,nargs='+',help="Verbose type filter: types entered will be excluded. Same usage as -T")
    parser.add_argument('--ulim',type=int,help="Provide upper length limit for SVs [bp] (inclusive)")

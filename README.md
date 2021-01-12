@@ -6,6 +6,8 @@ __SVread.py__ and __SVsee.py__ extract variant data from VCF files and visualize
 Both functionalities are boundled in __SVpipe.py__ to allow for a one-step process between data and figure.
 __SVpipe.py__'s functionality is extended with a GUI in SVgui.py. 
 
+For more extensive descriptions and examples see the [master's thesis](https://github.com/c-braeunig/structural-variation-viewer/blob/main/Br%C3%A4unig-SVviewer-2021.pdf) as part of which this suite was developed.
+
 ## Prerequisites
 The SVx.py programs require*:
 - __Python 3.7.6__
